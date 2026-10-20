@@ -12,10 +12,10 @@ class DepositoStrumenti:
         self._prossimo_numero_prestito = 1
 
     def get_responsabile(self):
-        return self.responsabile
+        return self.responsabile  # Funzione di get del responsabile senza usare il getter con @
 
     def set_responsabile(self, nuovo_responsabile):
-        self.responsabile = nuovo_responsabile
+        self.responsabile = nuovo_responsabile   # Funzione di set del responsabile senza usare il setter con @
 
     def carica_file_strumenti(self, file_path):
         """Carica gli strumenti dal file. Se il file non esiste, FileNotFoundError si propaga al chiamante."""
@@ -34,7 +34,7 @@ class DepositoStrumenti:
             anno_acquisto = int(campi[3].strip())
             valore = float(campi[4].strip())
 
-            strumento = Strumento(codice, tipo, marca, anno_acquisto, valore)
+            strumento = Strumento(codice, tipo, marca, anno_acquisto, valore)   # Creo oggetto
             self.strumenti.append(strumento)
 
     def aggiungi_strumento(self, tipo, marca, anno_acquisto, valore):
@@ -55,27 +55,27 @@ class DepositoStrumenti:
 
     def strumenti_ordinati_per_marca(self):
         """Ordina gli strumenti per marca in ordine alfabetico"""
-        return sorted(self.strumenti, key=lambda strumento: strumento.marca)
+        return sorted(self.strumenti, key=lambda strumento: strumento.marca)  # Sorto con la lambda in ordine di marca
 
     def nuovo_prestito(self, data, id_strumento, cognome_allievo):
         """Crea un nuovo prestito"""
         strumento_trovato = None
-        for strumento in self.strumenti:
+        for strumento in self.strumenti:   # Ciclo sulla lista di oggetti
             if strumento.codice == id_strumento:
                 strumento_trovato = strumento
 
         if strumento_trovato is None:
             raise Exception(f"Lo strumento {id_strumento} non è presente nel sistema.")
 
-        if not strumento_trovato.disponibile:
+        if not strumento_trovato.disponibile:   # Disponibile è un attributo booleano della classe Strumento
             raise Exception(f"Lo strumento {id_strumento} è già in prestito.")
 
         nuovo_codice = f"P{self._prossimo_numero_prestito}"
         self._prossimo_numero_prestito = self._prossimo_numero_prestito + 1
 
-        prestito = Prestito(nuovo_codice, data, id_strumento, cognome_allievo)
-        strumento_trovato.disponibile = False
-        self.prestiti.append(prestito)
+        prestito = Prestito(nuovo_codice, data, id_strumento, cognome_allievo)   # Creo un prestito nuovo
+        strumento_trovato.disponibile = False   # Lo strumento prestato non è più disponibile
+        self.prestiti.append(prestito)   # Aggiungo il prestito alla lista dei prestiti
 
         return prestito
 
@@ -93,4 +93,4 @@ class DepositoStrumenti:
             if strumento.codice == prestito_trovato.id_strumento:
                 strumento.disponibile = True
 
-        self.prestiti.remove(prestito_trovato)
+        self.prestiti.remove(prestito_trovato)  # Remove rimuove prendendo il valore; Pop prende l'indice

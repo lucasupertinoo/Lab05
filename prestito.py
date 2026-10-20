@@ -12,3 +12,5 @@ class Prestito:
 
     def __repr__(self):
         return f"{self.codice}: strumento {self.id_strumento} in prestito a {self.cognome_allievo} dal {self.data}"
+
+    # Definiamo sia str che repr così abbiamo un modo ben formattato di stampa degli oggetti

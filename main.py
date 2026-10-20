@@ -1,16 +1,17 @@
 import flet as ft
 from alert import AlertManager
 from deposito_strumenti import DepositoStrumenti
+# Importo la libreria flet e le classi
 
 FILE_STRUMENTI = "strumenti.csv"
 
-def main(page: ft.Page):
+def main(page: ft.Page):  # Funzione main per le variabili principali grafiche di flet
     page.title = "Lab05"
     page.horizontal_alignment = "center"
     page.theme_mode = ft.ThemeMode.DARK
 
     # --- ALERT ---
-    alert = AlertManager(page)
+    alert = AlertManager(page)  # Creo l'alert
 
     # --- LA LOGICA DELL'APPLICAZIONE E' PRESA DAL DEPOSITO DI STRUMENTI DEL LAB03 ---
     deposito = DepositoStrumenti("Deposito Strumenti Musicali", "Alessandro Visconti")
@@ -27,10 +28,11 @@ def main(page: ft.Page):
         value=f"Responsabile: {deposito.get_responsabile()}",
         size=16,
         weight=ft.FontWeight.BOLD
-    )
+    )    # Per ogni testo metto size e font che voglio
 
     # TextField per responsabile
-    input_responsabile = ft.TextField(value=deposito.get_responsabile(), label="Responsabile")
+    input_responsabile = ft.TextField(value=deposito.get_responsabile(), label="Responsabile") # Label ci dà la scritta che appare, Value ci dà il valore che viene espresso dal bottone,
+                                                                                               # deposito.get_responsabile() è il metodo definito nella classe deposito
 
     # ListView per mostrare la lista di strumenti aggiornata
     lista_strumenti = ft.ListView(expand=True, spacing=5, padding=10, auto_scroll=True)
