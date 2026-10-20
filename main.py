@@ -5,7 +5,7 @@ from deposito_strumenti import DepositoStrumenti
 
 FILE_STRUMENTI = "strumenti.csv"
 
-def main(page: ft.Page):  # Funzione main per le variabili principali grafiche di flet
+def main(page: ft.Page):  # Funzione main per gli elementi principali grafiche di flet
     page.title = "Lab05"
     page.horizontal_alignment = "center"
     page.theme_mode = ft.ThemeMode.DARK
@@ -38,6 +38,9 @@ def main(page: ft.Page):  # Funzione main per le variabili principali grafiche d
     lista_strumenti = ft.ListView(expand=True, spacing=5, padding=10, auto_scroll=True)
 
     # Tutti i TextField per le info necessarie per aggiungere un nuovo strumento (tipo, marca, anno, contatore posti)
+    txt_tipo = ft.TextField(label = "Tipo", width = 300)
+    txt_marca = ft.TextField(label= "Marca", width = 300)
+    txt_anno = ft.TextField(label= "Anno", width = 300)
     # TODO
 
     # --- FUNZIONI APP ---
