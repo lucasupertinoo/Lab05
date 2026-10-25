@@ -1,6 +1,7 @@
 import flet as ft
 from alert import AlertManager
 from deposito_strumenti import DepositoStrumenti
+# Importo la libreria flet e le classi
 
 FILE_STRUMENTI = "strumenti.csv"
 
@@ -27,15 +28,19 @@ def main(page: ft.Page):
         value=f"Responsabile: {deposito.get_responsabile()}",
         size=16,
         weight=ft.FontWeight.BOLD
-    )
+    )   # Per ogni testo metto size e font che voglio
 
     # TextField per responsabile
-    input_responsabile = ft.TextField(value=deposito.get_responsabile(), label="Responsabile")
+    input_responsabile = ft.TextField(value=deposito.get_responsabile(), label="Responsabile")  # Label ci dà la scritta che appare, Value ci dà il valore che viene espresso dal bottone,
+                                                                                                # deposito.get_responsabile() è il metodo definito nella classe deposito
 
     # ListView per mostrare la lista di strumenti aggiornata
     lista_strumenti = ft.ListView(expand=True, spacing=5, padding=10, auto_scroll=True)
 
     # Tutti i TextField per le info necessarie per aggiungere un nuovo strumento (tipo, marca, anno, contatore posti)
+    txt_tipo = ft.TextField(label = "Tipo", width = 300)
+    txt_marca = ft.TextField(label= "Marca", width = 300)
+    txt_anno = ft.TextField(label= "Anno", width = 300)
     # TODO
 
     # --- FUNZIONI APP ---
