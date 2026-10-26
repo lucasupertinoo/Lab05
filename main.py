@@ -2,6 +2,7 @@ import flet as ft
 from alert import AlertManager
 from deposito_strumenti import DepositoStrumenti
 # Importo la libreria flet e le classi
+# Implementiamo con calma separatamente UI, funzionalità, layout...
 
 FILE_STRUMENTI = "strumenti.csv"
 
@@ -80,8 +81,8 @@ def main(page: ft.Page):
     # Handlers per la gestione dei pulsanti utili all'inserimento di un nuovo strumento
 
     # Handler del pulsante "-" del contatore.
-    # Tutti gli handler ricevono il parametro "e" (l'evento del click), anche se non lo usiamo
-    def decrementa_valore(e):
+    # Tutti gli handler ricevono il parametro "e" (l'evento del click in questo caso), anche se non lo usiamo
+    def decrementa_valore(e):  # e è un parametro che viene passato alle funzioni per indicare un evento
         valore = leggi_valore_contatore()
         if valore > 0:                     # Non permetto di scendere sotto zero (un valore negativo non ha senso)
             valore = valore - 1
